@@ -13,8 +13,22 @@ export default function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  try {
+
+    // Check if a session already exists
+    const user = await account.get();
+
+    if (user) {
+      console.log("User already logged in:", user);
+      alert("Already logged in");
+      navigate("/dashboard");
+      return;
+    }
+
+  } catch (err) {
+    // No active session → create login session
     try {
 
       await account.createEmailPasswordSession(email, password);
@@ -24,13 +38,13 @@ export default function Login() {
       navigate("/dashboard");
 
     } catch (error) {
-      alert("Login Failed");
+
       console.log(error);
+      alert("Login Failed");
 
     }
-
-  };
-
+  }
+};
   return (
 
     <AuthLayout>
