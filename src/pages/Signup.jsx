@@ -100,8 +100,8 @@ export default function Signup() {
       </form>
 
       <OAuthButtons
-        loginRedirect="http://localhost:5173/dashboard"
-        failureRedirect="http://localhost:5173/signup"
+        loginRedirect="https://travel-curd-dashboard.netlify.app/dashboard"
+        failureRedirect="https://travel-curd-dashboard.netlify.app/signup"
       />
 
       <p className="text-center text-white text-sm mt-4">
